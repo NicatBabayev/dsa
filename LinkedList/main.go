@@ -9,12 +9,12 @@ type Node struct {
 	next *Node
 }
 
-type LinkedList struct {
+type SinglyLinkedList struct {
 	head   *Node
 	length int
 }
 
-func (l *LinkedList) listNodes() {
+func (l *SinglyLinkedList) listNodes() {
 	currentNode := l.head
 	listLength := l.length
 	for listLength > 0 {
@@ -24,7 +24,7 @@ func (l *LinkedList) listNodes() {
 	}
 }
 
-func (l *LinkedList) findByValue(data int) Node {
+func (l *SinglyLinkedList) findByValue(data int) Node {
 	currentNode := l.head
 	listLength := l.length
 	for listLength > 0 {
@@ -36,7 +36,7 @@ func (l *LinkedList) findByValue(data int) Node {
 	return Node{}
 }
 
-func (l *LinkedList) append(n Node) {
+func (l *SinglyLinkedList) append(n Node) {
 	currentNode := l.head
 	listLength := l.length
 
@@ -51,14 +51,14 @@ func (l *LinkedList) append(n Node) {
 	}
 }
 
-func (l *LinkedList) prepend(n Node) {
+func (l *SinglyLinkedList) prepend(n Node) {
 	second := l.head
 	l.head = &n
 	l.head.next = second
 	l.length++
 }
 
-func (l *LinkedList) addAfterValue(addAfter int, node Node) {
+func (l *SinglyLinkedList) addAfterValue(addAfter int, node Node) {
 	currentNode := l.head
 	listLength := l.length
 	for listLength > 0 {
@@ -74,7 +74,7 @@ func (l *LinkedList) addAfterValue(addAfter int, node Node) {
 	}
 }
 
-func (l *LinkedList) addBeforeValue(addBefore int, node Node) {
+func (l *SinglyLinkedList) addBeforeValue(addBefore int, node Node) {
 	currentNode := l.head
 	listLength := l.length
 	for listLength > 0 {
@@ -90,12 +90,12 @@ func (l *LinkedList) addBeforeValue(addBefore int, node Node) {
 	}
 }
 
-func (l *LinkedList) deleteFromBeginning() {
+func (l *SinglyLinkedList) deleteFromBeginning() {
 	l.head = l.head.next
 	l.length--
 }
 
-func (l *LinkedList) deleteFromEnd() {
+func (l *SinglyLinkedList) deleteFromEnd() {
 	currentNode := l.head
 	listLength := l.length
 	for listLength > 0 {
@@ -108,7 +108,7 @@ func (l *LinkedList) deleteFromEnd() {
 		listLength--
 	}
 }
-func (l *LinkedList) deleteByValue(node Node) {
+func (l *SinglyLinkedList) deleteByValue(node Node) {
 	currentNode := l.head
 	listLength := l.length
 
@@ -130,7 +130,7 @@ func (l *LinkedList) deleteByValue(node Node) {
 }
 
 func main() {
-	lList := LinkedList{}
+	lList := SinglyLinkedList{}
 	node1 := Node{data: 45}
 	node2 := Node{data: 356}
 	node3 := Node{data: 238}
