@@ -125,7 +125,7 @@ func (l *SinglyLinkedList) deleteByValue(node Node) {
 	}
 
 	for listLength > 0 {
-		if currentNode.next.data == node.data { //FIXME it doesn't work when I want to delete the first element
+		if currentNode.next.data == node.data {
 			if currentNode.next.next == nil {
 				currentNode.next = nil
 				l.length--
