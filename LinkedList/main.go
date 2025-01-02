@@ -40,6 +40,12 @@ func (l *SinglyLinkedList) append(n Node) {
 	currentNode := l.head
 	listLength := l.length
 
+	if l.length == 0 {
+		l.head = &n
+		l.length++
+		return
+	}
+
 	for listLength > 0 {
 		if currentNode.next == nil {
 			currentNode.next = &n
@@ -112,8 +118,14 @@ func (l *SinglyLinkedList) deleteByValue(node Node) {
 	currentNode := l.head
 	listLength := l.length
 
+	if currentNode.data == node.data {
+		l.head = l.head.next
+		l.length--
+		return
+	}
+
 	for listLength > 0 {
-		if currentNode.next.data == node.data {
+		if currentNode.next.data == node.data { //FIXME it doesn't work when I want to delete the first element
 			if currentNode.next.next == nil {
 				currentNode.next = nil
 				l.length--
@@ -124,9 +136,9 @@ func (l *SinglyLinkedList) deleteByValue(node Node) {
 				return
 			}
 		}
+		currentNode = currentNode.next
+		listLength--
 	}
-	currentNode = currentNode.next
-	listLength--
 }
 
 func main() {
@@ -143,9 +155,9 @@ func main() {
 	lList.append(node4)
 	lList.addAfterValue(356, node5)
 	lList.addBeforeValue(356, node6)
-	fmt.Println(lList)
 	lList.deleteFromBeginning()
 	lList.deleteFromEnd()
-	lList.deleteByValue(node2)
+	lList.deleteByValue(node1)
 	lList.listNodes()
+
 }
